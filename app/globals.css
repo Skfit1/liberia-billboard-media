@@ -64,7 +64,7 @@
 @media(max-width:900px){.price-grid{grid-template-columns:1fr}.loc-row{grid-template-columns:40px 1fr;gap:14px}.loc-icon{display:none}.loc-meta{grid-column:2;align-items:flex-start;flex-direction:row;flex-wrap:wrap;text-align:left}}
 
 /* ===================== Admin console ===================== */
-.admin-shell{display:grid;grid-template-columns:264px 1fr;min-height:100vh;background:#eef0ea}
+.admin-shell{display:grid;grid-template-columns:264px minmax(0,1fr);min-height:100vh;background:#eef0ea}
 .admin-side{background:#14222a;color:#fff;display:flex;flex-direction:column;padding:26px 18px;position:sticky;top:0;height:100vh}
 .admin-brand{display:flex;align-items:center;gap:11px;padding:0 6px 24px;border-bottom:1px solid #26343b;margin-bottom:18px}
 .admin-brand .mark{width:40px;height:40px;font-size:18px}
@@ -112,17 +112,30 @@
 .bb-bar-fill{height:100%;min-width:2px}
 .bb-status-row strong{text-align:right;font-variant-numeric:tabular-nums;font-size:14px}
 /* Tables */
-.admin-table{width:100%;border-collapse:collapse;font-size:14px}
-.admin-table th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#8a938f;font-weight:700;padding:0 12px 12px;border-bottom:1px solid #d6dad3}
-.admin-table td{padding:14px 12px;border-bottom:1px solid #eceee9;vertical-align:top}
+.admin-table{width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed}
+.admin-table col.col-client{width:21%}
+.admin-table col.col-contact{width:28%}
+.admin-table col.col-city{width:12%}
+.admin-table col.col-contracts{width:13%}
+.admin-table col.col-value{width:12%}
+.admin-table col.col-status{width:14%}
+.admin-table th.nums{white-space:nowrap}
+.admin-table td{overflow:hidden;text-overflow:ellipsis}
+.admin-table th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#8a938f;font-weight:700;padding:0 9px 12px;border-bottom:1px solid #d6dad3}
+.admin-table td{padding:14px 9px;border-bottom:1px solid #eceee9;vertical-align:middle}
+.client-id{display:flex;flex-direction:column;gap:4px;min-width:0}
+.client-id strong{line-height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.client-id .muted{font-size:12px;color:#8a938f;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.contact-cell a svg{flex:0 0 auto}
 .admin-table tr:last-child td{border-bottom:0}
 .admin-table .muted{color:#8a938f;font-weight:400}
 .admin-table .nums{font-variant-numeric:tabular-nums;white-space:nowrap}
 .admin-table .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
 .admin-table tr.clickable{cursor:pointer}
 .admin-table tr.clickable:hover td{background:#f6f7f3}
-.contact-cell{display:flex;flex-direction:column;gap:4px}
-.contact-cell a{display:flex;align-items:center;gap:6px;font-size:13px}
+.contact-cell{display:flex;flex-direction:column;gap:4px;min-width:0}
+.contact-cell a{display:flex;align-items:center;gap:6px;font-size:13px;line-height:20px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.contact-cell a .ct{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .contact-cell a:hover{text-decoration:underline;text-underline-offset:2px}
 .detail-row td{background:#f6f7f3;padding-top:0}
 .detail{padding:6px 2px 12px}
@@ -153,7 +166,7 @@
 .admin-count{margin:16px 0 0;font-size:12px;color:#8a938f;font-variant-numeric:tabular-nums}
 /* Horizontal-scroll wrapper so wide tables never overflow the viewport */
 .table-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.admin-table{min-width:640px}
+.admin-table{min-width:0}
 /* Mobile-only admin chrome (hidden on desktop) */
 .admin-topbar{display:none}
 .admin-overlay{display:none}
@@ -163,7 +176,7 @@
 @media(max-width:1200px){.stat-grid{grid-template-columns:repeat(2,1fr)}.admin-cols{grid-template-columns:1fr}}
 /* Tablet & mobile: sidebar becomes an off-canvas drawer with a top bar */
 @media(max-width:900px){
-  .admin-shell{grid-template-columns:1fr}
+  .admin-shell{grid-template-columns:minmax(0,1fr)}
   .admin-topbar{display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:50;background:#14222a;color:#fff;height:60px;padding:0 16px}
   .admin-toggle{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;margin-left:-10px;background:transparent;border:0;color:#fff;-webkit-tap-highlight-color:transparent}
   .admin-topbar-title{display:flex;align-items:center;gap:10px;font-size:15px;overflow:hidden}
@@ -197,7 +210,6 @@
   .admin-table td[data-label]{display:flex;justify-content:space-between;align-items:baseline;gap:16px;text-align:right;padding:10px 14px;border-bottom:1px solid #f0f1ec;white-space:normal}
   .admin-table td[data-label]:last-child{border-bottom:0}
   .admin-table td[data-label]::before{content:attr(data-label);flex:0 0 auto;text-align:left;font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#8a938f}
-  .admin-table td.contact-cell{align-items:flex-end}
   .contact-cell{align-items:flex-end}
   .detail-row td{display:block;padding:0 14px 12px}
   .detail-contact{gap:12px}

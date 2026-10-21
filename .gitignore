@@ -44,3 +44,8 @@ next-env.d.ts
 /.codex/
 /outputs/
 /work/
+
+# Platform marker & local logs (never publish)
+.abacus.donotdelete
+.logs/
+**/.logs/
